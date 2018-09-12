@@ -1,0 +1,33 @@
+# config/routes.yaml
+leagues_get_teams_by_league:
+  path: /api/v1/leagues/{league}
+  controller: App\Controller\Api\v1\LeaguesController::getTeamsAction
+  methods: [GET]
+  requirements:
+    league: '\d+'
+
+leagues_delete:
+  path: /api/v1/leagues/{league}
+  controller: App\Controller\Api\v1\LeaguesController::deleteAction
+  methods: [DELETE]
+  requirements:
+    league: '\d+'
+
+teams_get:
+  path: /api/v1/teams/{team}
+  controller: App\Controller\Api\v1\TeamsController::getTeamAction
+  methods: [GET]
+  requirements:
+      team: '\d+'
+
+teams_create:
+  path: /api/v1/teams
+  controller: App\Controller\Api\v1\TeamsController::newAction
+  methods: [POST]
+
+teams_update:
+  path: /api/v1/teams/{team}
+  controller: App\Controller\Api\v1\TeamsController::updateAction
+  methods: [PUT]
+  requirements:
+    team: '\d+'
