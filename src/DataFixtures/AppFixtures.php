@@ -3,6 +3,7 @@ namespace App\DataFixtures;
 
 use App\Entity\League;
 use App\Entity\Team;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -75,5 +76,12 @@ class AppFixtures extends Fixture
             }
             $manager->flush();
         }
+
+        //user - for generating the token
+        $user = new User();
+        $user->setUsername('king');
+        $user->setPassword('$2y$13$5IvRj6u6l5E0kZqkcnSBFu8WKYTGmcPOxejppVAs6dq8pzwc7V9ZS'); //kong
+        $manager->persist($user);
+        $manager->flush();
     }
 }

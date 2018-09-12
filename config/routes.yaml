@@ -16,6 +16,11 @@ login_check:
     path:     /login_check
     methods:  [POST]
 
+api_token:
+  path: /token
+  controller: App\Controller\Api\v1\TokenController::newTokenAction
+  methods: [GET,POST]
+
 leagues_get_teams_by_league:
   path: /api/v1/leagues/{league}
   controller: App\Controller\Api\v1\LeaguesController::getTeamsAction

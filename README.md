@@ -17,7 +17,14 @@ https://github.com/lexik/LexikJWTAuthenticationBundle
 You have to crete user/password for JWT authentication and get token. Just follow these instructions:
 https://github.com/chalasr/lexik-jwt-authentication-sandbox
 
-Use the token for all your API calls.
+Or you can simply run the fixtures and use the default one: king / kong
+
+### Get token
+Make a POST call to "/token" with username/password params.
+You will get the token which you have to use for all your API calls.
+Pass it in HEADER:
+ 
+Authorization : Bearer {token}
 
 ### PHPUnit
 php bin/phpunit tests/Controller/Api/
