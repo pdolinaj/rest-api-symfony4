@@ -1,4 +1,21 @@
 # config/routes.yaml
+
+api_login_check:
+    path: /api/login_check
+
+register:
+    path: /register
+    controller: App\Controller\DefaultController::register
+    methods: POST
+
+api:
+    path: /api
+    controller: App\Controller\DefaultController::api
+
+login_check:
+    path:     /login_check
+    methods:  [POST]
+
 leagues_get_teams_by_league:
   path: /api/v1/leagues/{league}
   controller: App\Controller\Api\v1\LeaguesController::getTeamsAction

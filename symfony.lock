@@ -89,6 +89,21 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "lcobucci/jwt": {
+        "version": "3.2.4"
+    },
+    "lexik/jwt-authentication-bundle": {
+        "version": "2.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.5",
+            "ref": "509b1542f3180a1cfe248ade8b7bf5092c2d4127"
+        }
+    },
+    "namshi/jose": {
+        "version": "7.2.3"
+    },
     "nikic/php-parser": {
         "version": "v4.0.3"
     },
@@ -243,6 +258,18 @@
             "branch": "master",
             "version": "4.0",
             "ref": "5f514d9d3b8a8aac3d62ae6a86b18b90ed0c7826"
+        }
+    },
+    "symfony/security": {
+        "version": "v4.1.4"
+    },
+    "symfony/security-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "f8a63faa0d9521526499c0a8f403c9964ecb0527"
         }
     },
     "symfony/serializer": {
