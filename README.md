@@ -4,8 +4,6 @@ Test project for REST API using Symfony 4
 ### Working solutions to this problem:
 https://docs.google.com/document/d/11tb8EX_XpGsUChkhvIlvGpwaSXey7wJq4HCsxRLEYlA/edit
 
-### REST Resource Naming Guides
-https://restfulapi.net/resource-naming/
 
 ### Run migrations
 php bin/console doctrine:migrations:migrate
@@ -23,3 +21,13 @@ Use the token for all your API calls.
 
 ### PHPUnit
 php bin/phpunit tests/Controller/Api/
+
+
+### Resources
+https://restfulapi.net/resource-naming/
+https://knpuniversity.com/screencast/rest/intro
+https://knpuniversity.com/screencast/symfony-rest
+https://knpuniversity.com/screencast/symfony-rest2
+https://knpuniversity.com/screencast/symfony-rest3
+https://knpuniversity.com/screencast/symfony-rest4
+https://knpuniversity.com/screencast/symfony-rest5
