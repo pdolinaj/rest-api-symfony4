@@ -24,10 +24,12 @@ php bin/phpunit tests/Controller/Api/
 
 
 ### Resources
-https://restfulapi.net/resource-naming/
-https://knpuniversity.com/screencast/rest/intro
-https://knpuniversity.com/screencast/symfony-rest
-https://knpuniversity.com/screencast/symfony-rest2
-https://knpuniversity.com/screencast/symfony-rest3
-https://knpuniversity.com/screencast/symfony-rest4
-https://knpuniversity.com/screencast/symfony-rest5
+- https://restfulapi.net/resource-naming/
+- https://knpuniversity.com/screencast/rest/intro
+- https://knpuniversity.com/screencast/symfony-rest
+- https://knpuniversity.com/screencast/symfony-rest2
+- https://knpuniversity.com/screencast/symfony-rest3
+- https://knpuniversity.com/screencast/symfony-rest4
+- https://knpuniversity.com/screencast/symfony-rest5
+
+##### (c) 2018 * Peter Dolinaj
