@@ -24,16 +24,26 @@ class TeamsControllerTest extends ApiTestCase
             'league' => 1
         );
 
-        // Create a team resource
+        $token = self::$kernel->getContainer()
+            ->get('lexik_jwt_authentication.encoder')
+            ->encode(['username' => 'king']);
+
         $response = $this->client->post('/api/v1/teams', [
-            'form_params' => $data
+            'form_params' => $data,
+            'headers' => [
+                'Authorization' => 'Bearer '.$token
+            ]
         ]);
 
         $this->assertEquals(201, $response->getStatusCode());
         $this->assertTrue($response->hasHeader('Location'));
 
         //check whether the Team has been created
-        $teamResponse = $this->client->get(current($response->getHeader('Location')));
+        $teamResponse = $this->client->get(current($response->getHeader('Location')), [
+            'headers' => [
+                'Authorization' => 'Bearer '.$token
+            ]
+        ]);
         $this->assertEquals(200, $teamResponse->getStatusCode());
 
         $teamData = json_decode($teamResponse->getBody(), true);
@@ -55,15 +65,26 @@ class TeamsControllerTest extends ApiTestCase
             'league' => 1
         );
 
+        $token = self::$kernel->getContainer()
+            ->get('lexik_jwt_authentication.encoder')
+            ->encode(['username' => 'king']);
+
         // Create a team resource
         $response = $this->client->put('/api/v1/teams/1', [
-            'body' => json_encode($data)
+            'body' => json_encode($data),
+            'headers' => [
+                'Authorization' => 'Bearer '.$token
+            ]
         ]);
 
         $this->assertEquals(200, $response->getStatusCode());
 
         //check whether the Team has been updated
-        $teamResponse = $this->client->get('/api/v1/teams/1');
+        $teamResponse = $this->client->get('/api/v1/teams/1', [
+            'headers' => [
+                'Authorization' => 'Bearer '.$token
+            ]
+        ]);
         $this->assertEquals(200, $teamResponse->getStatusCode());
 
         $teamData = json_decode($teamResponse->getBody(), true);

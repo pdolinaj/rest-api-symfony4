@@ -8,10 +8,12 @@
 
 namespace App\Tests;
 
-use PHPUnit\Framework\TestCase;
+//Access Services: https://symfony.com/blog/new-in-symfony-4-1-simpler-service-testing
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
 use GuzzleHttp\Client;
 
-class ApiTestCase extends TestCase
+class ApiTestCase extends WebTestCase
 {
     private static $staticClient;
 
@@ -29,6 +31,8 @@ class ApiTestCase extends TestCase
 
     protected function setUp()
     {
+        self::bootKernel();
+
         $this->client = self::$staticClient;
     }
 }

@@ -9,7 +9,6 @@ namespace App\Tests\Controller\Api;
 
 use App\Tests\ApiTestCase;
 
-
 class LeaguesControllerTest extends ApiTestCase
 {
     protected function setUp()
@@ -19,11 +18,21 @@ class LeaguesControllerTest extends ApiTestCase
 
     public function testGETTeams()
     {
+        $token = self::$kernel->getContainer()
+            ->get('lexik_jwt_authentication.encoder')
+            ->encode(['username' => 'king']);
+
         //existing league
-        $response = $this->client->get('api/v1/leagues/1');
+        $response = $this->client->get('api/v1/leagues/1', [
+            'headers' => [
+                'Authorization' => 'Bearer '.$token
+            ]
+        ]);
+
         $this->assertEquals(200, $response->getStatusCode());
 
         $data = json_decode($response->getBody(), true);
+
         $this->assertArrayHasKey('data', $data);
         $this->assertArrayHasKey('status', $data);
         $this->assertGreaterThan(1, count($data['data']));
@@ -31,9 +40,17 @@ class LeaguesControllerTest extends ApiTestCase
 
     public function testDELETELeague()
     {
+        $token = self::$kernel->getContainer()
+            ->get('lexik_jwt_authentication.encoder')
+            ->encode(['username' => 'king']);
+
         $response = $this->client->delete('api/v1/leagues/3', [
-            'http_errors' => false
+            'http_errors' => false,
+            'headers' => [
+                'Authorization' => 'Bearer '.$token
+            ]
         ]);
+
         $this->assertEquals(200, $response->getStatusCode());
     }
 }
