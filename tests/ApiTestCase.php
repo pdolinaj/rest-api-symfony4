@@ -10,12 +10,19 @@ namespace App\Tests;
 
 //Access Services: https://symfony.com/blog/new-in-symfony-4-1-simpler-service-testing
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+//use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use App\Entity\User;
 
 use GuzzleHttp\Client;
 
 class ApiTestCase extends WebTestCase
 {
     private static $staticClient;
+
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
+    private $entityManager;
 
     /**
      * @var Client
@@ -31,8 +38,40 @@ class ApiTestCase extends WebTestCase
 
     protected function setUp()
     {
-        self::bootKernel();
+        $kernel = self::bootKernel();
 
         $this->client = self::$staticClient;
+
+        $this->entityManager = $kernel->getContainer()
+            ->get('doctrine')
+            ->getManager();
+    }
+
+    /**
+     * @param $username
+     * @param string $plainPassword
+     * @return User
+     */
+    protected function createUser($username, $plainPassword = 'VerySecurePassword')
+    {
+        $user = new User($username);
+        $password = self::$kernel->getContainer()->get('security.password_encoder')
+            ->encodePassword($user, $plainPassword);
+        $user->setPassword($password);
+        $em = $this->entityManager;
+        $em->persist($user);
+        $em->flush();
+        return $user;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function tearDown()
+    {
+        parent::tearDown();
+
+        $this->entityManager->close();
+        $this->entityManager = null; // avoid memory leaks
     }
 }
