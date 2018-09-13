@@ -24,7 +24,8 @@
         "symfony/dotenv": "*",
         "symfony/maker-bundle": "^1.7",
         "symfony/phpunit-bridge": "*",
-        "symfony/var-dumper": "*"
+        "symfony/var-dumper": "*",
+        "squizlabs/php_codesniffer": "3.*"
     },
     "config": {
         "preferred-install": {

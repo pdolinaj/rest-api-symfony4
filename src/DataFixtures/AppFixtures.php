@@ -51,22 +51,22 @@ class AppFixtures extends Fixture
             'St Mirren'
         ];
 
-        foreach($footballLeagues as $footballLeague) {
+        foreach ($footballLeagues as $footballLeague) {
             $league = new League();
             $league->setName($footballLeague);
             $manager->persist($league);
             $manager->flush();
 
-            if($league->getName() == 'Premier League') {
-                foreach($teamsEngland as $teamEngland) {
+            if ($league->getName() == 'Premier League') {
+                foreach ($teamsEngland as $teamEngland) {
                     $team = new Team();
                     $team->setName($teamEngland);
                     $team->setLeague($league);
                     $team->setStrip($teamEngland);
                     $manager->persist($team);
                 }
-            } elseif($league->getName() == 'Scottish Premiership') {
-                foreach($teamsScottland as $teamScottland) {
+            } elseif ($league->getName() == 'Scottish Premiership') {
+                foreach ($teamsScottland as $teamScottland) {
                     $team = new Team();
                     $team->setName($teamScottland);
                     $team->setLeague($league);

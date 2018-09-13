@@ -49,7 +49,9 @@ class TeamsController extends Controller
         }
 
         return $this->json(
-            array('status' => 201, 'message' => 'Team created'), 201, array('Location' => sprintf('/api/v1/teams/%d', $team->getId()))
+            array('status' => 201, 'message' => 'Team created'),
+            201,
+            array('Location' => sprintf('/api/v1/teams/%d', $team->getId()))
         );
     }
 
@@ -116,6 +118,4 @@ class TeamsController extends Controller
         $apiProblem->set('errors', $errors);
         throw new ApiProblemException($apiProblem);
     }
-
 }
-

@@ -22,7 +22,7 @@ class LeaguesController extends Controller
         $teams = $league->getTeams();
 
         $response = array();
-        foreach($teams as $team) {
+        foreach ($teams as $team) {
             $response[] = array('id' => $team->getId(), 'name' => $team->getName());
         }
         return $this->json(array('status' => 200, 'data' => $response), 200);
@@ -49,5 +49,4 @@ class LeaguesController extends Controller
 
         return $this->json(array('status' => 200, 'message' => 'League deleted'), 200);
     }
-
 }
